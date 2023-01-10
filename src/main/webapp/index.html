@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jaspic Bug</title>
+<script type="text/javascript">
+	async function getSecurityResponse() {
+		return fetch("rest/secure");
+	}
+	
+	function login(){
+		fetch("rest/auth/login?username=user&password=password").then(addLine("Logged In")).catch(error => addLine("Failure during log in: "+ error.message));
+	}
+	
+	function logout(){
+		fetch("rest/auth/logout").then(addLine("Logged Out")).catch(error => addLine("Failure during log out: "+ error.message));
+	}
+	
+	function addLine(line){
+		addToOutput(line+"\n");
+	}
+	
+	function addToOutput(value){
+		let textarea = document.getElementById("output");
+		textarea.value+=value;
+		textarea.scrollTop = textarea.scrollHeight 
+	}
+	
+	async function delay(time) {
+		  return new Promise(resolve => setTimeout(resolve, time));
+	}
+
+	async function startSecurityCheck() {
+		addLine("Starting security check.");
+		addLine("Periodically calling secure resource.\n");
+		do {
+			result = await getSecurityResponse();
+			if(result.status==200){
+				addToOutput("+");
+			}
+			await delay(100);
+		} while (result.status == 200);
+		addLine("Ending Security check with result status: " + result.status);
+	}
+</script>
+</head>
+<body>
+	<div style="margin-right: 10px; margin-bottom: 10px;">
+		<input type="button" value="Login" onclick="login()" /> <input
+			type="button" value="Logout" onclick="logout()" /> <input
+			type="button" value="Check Security" onclick="startSecurityCheck()" />
+	</div>
+	<div>
+		<textarea id="output" disabled="disabled" rows="10" cols="120"></textarea>
+	</div>
+</body>
+</html>
