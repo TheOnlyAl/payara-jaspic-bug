@@ -1,24 +1,24 @@
 package de.adtelligence.jaspicbug;
 
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
-import jakarta.security.enterprise.AuthenticationStatus;
-import jakarta.security.enterprise.SecurityContext;
-import jakarta.security.enterprise.authentication.mechanism.http.AuthenticationParameters;
-import jakarta.security.enterprise.credential.UsernamePasswordCredential;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.validation.constraints.NotNull;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.Response.Status;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.security.enterprise.AuthenticationStatus;
+import javax.security.enterprise.SecurityContext;
+import javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters;
+import javax.security.enterprise.credential.UsernamePasswordCredential;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 @RequestScoped
 @Path("auth")
