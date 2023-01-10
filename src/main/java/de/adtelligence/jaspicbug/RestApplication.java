@@ -1,11 +1,11 @@
 package de.adtelligence.jaspicbug;
 
-import javax.annotation.security.DeclareRoles;
-import javax.enterprise.context.ApplicationScoped;
-import javax.security.enterprise.authentication.mechanism.http.CustomFormAuthenticationMechanismDefinition;
-import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.security.enterprise.authentication.mechanism.http.CustomFormAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import jakarta.ws.rs.ApplicationPath;
+import jakarta.ws.rs.core.Application;
 
 @ApplicationScoped
 @ApplicationPath("/rest")
