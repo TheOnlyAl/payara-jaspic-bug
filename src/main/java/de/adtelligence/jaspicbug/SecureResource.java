@@ -1,8 +1,3 @@
-/*
- * @(#)SecureResource.java
- *
- * Copyright 2023 ADTELLIGENCE GmbH. All rights reserved.
- */
 package de.adtelligence.jaspicbug;
 
 import javax.annotation.security.RolesAllowed;

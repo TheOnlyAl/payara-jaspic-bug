@@ -1,11 +1,5 @@
-/*
- * @(#)AuthenticationResource.java
- *
- * Copyright 2023 ADTELLIGENCE GmbH. All rights reserved.
- */
 package de.adtelligence.jaspicbug;
 
-import javax.annotation.ManagedBean;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.security.enterprise.AuthenticationStatus;
@@ -26,7 +20,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-@ManagedBean
 @RequestScoped
 @Path("auth")
 public class AuthenticationResource {
