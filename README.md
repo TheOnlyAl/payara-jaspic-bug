@@ -25,7 +25,7 @@ Sometimes calls will return with `HTTP 403 Foprbidden` while the server is under
 * Browse to `http://localhost:8080/jaspic-bug/`
 * Click on `Login` to authenticate
 * Click on `Check Security`. This will start a periodically check which will check if the protected resource can be accessed. This will write a `+` for every successfull call
-* Now use JMeter to and start the test plan from `/src/test/resources/CreateLoad.jmx`. For example like this: `./jmeter -n -t src/test/resources/CreateLoad.jmx
+* Now use [JMeter](https://jmeter.apache.org/download_jmeter.cgi) to and start the test plan from `/src/test/resources/CreateLoad.jmx`. For example like this: `./jmeter -n -t src/test/resources/CreateLoad.jmx
 * When the Bug occurs you should get this output: `Ending Security check with result status: 403`
 
 ## Additional information
