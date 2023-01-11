@@ -25,15 +25,15 @@ Sometimes calls will return with `HTTP 403 Foprbidden` while the server is under
 * Browse to `http://localhost:8080/jaspic-bug/`
 * Click on `Login` to authenticate
 * Click on `Check Security`. This will start a periodically check which will check if the protected resource can be accessed. This will write a `+` for every successfull call
-* Now use [JMeter](https://jmeter.apache.org/download_jmeter.cgi) to and start the test plan from `/src/test/resources/CreateLoad.jmx`. For example like this: `./jmeter -n -t src/test/resources/CreateLoad.jmx
+* To generate load you can use [JMeter](https://jmeter.apache.org/download_jmeter.cgi) and use the provided test plan from `/src/test/resources/CreateLoad.jmx`. For example like this: `./jmeter -n -t src/test/resources/CreateLoad.jmx`
 * When the Bug occurs you should get this output: `Ending Security check with result status: 403`
 
 ## Additional information
 
-After further investigation it might be some problem with the login remembering functionality which uses an interceptor:
+After further investigation it might be some problem with the `@AutoApplySession ` functionality which uses the following interceptor:
 [AutoApplySessionInterceptor.java](https://github.com/payara/patched-src-security-soteria/blob/security-soteria-1.1-b01.payara-p4/impl/src/main/java/org/glassfish/soteria/cdi/AutoApplySessionInterceptor.java#L81)
 
-The problem seems to be that the actual additional information which is returned is not correct for a call under load.
+The problem seems to be that the actual additional information which is returned is not correct for a call under load: 
 [BaseContainerCallbackHandler.java](https://github.com/payara/Payara/blob/payara-server-5.2022.5/appserver/security/core-ee/src/main/java/com/sun/enterprise/security/jaspic/callback/BaseContainerCallbackHandler.java#L353)
 
 The `SecurityContext.getCurrent().getAdditionalPrincipal()` will return null for the calls which result in a 403 unauthorized. And since the group information seems to be part of the additional information this is a problem.
